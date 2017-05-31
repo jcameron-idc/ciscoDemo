@@ -1,15 +1,29 @@
-$(function(){
-    var e = document.forms['form'];
-    e = e.getElementsByTagName('label');
-    var num2 = e.length;
+// function myFunction() {
+//     var x = document.forms[0];
+//     var txt = "";
+//     var i;
+//     for (i = 0; i < x.length; i++) {
+//         txt = txt + x.elements[i].value + "<br>";
+//     }
+//     document.getElementById("demo").innerHTML = txt;
+// }
+$(function () {
+    var e = document.forms[0];
+    var numQuestion;
+    var i;
+    var formName = $(this).e;
+    for (i = 0; i < e.length; i++) {
+        numQuestion = e.getElementsByTagName('label');
+        console.log(numQuestion.length);
+    }
 
-    var $checkboxes = $('#form1, #form2, #form3, input[type="checkbox"]');
+    $('#' + formName).closest('.panel-heading').find('.numOfQuestions').text('/' + e.length);
 
-    $checkboxes.change(function(){
+    var $checkboxes = $('input[type="checkbox"], #form1');
+
+    $checkboxes.change(function () {
         var countCheckedCheckboxes = $checkboxes.filter(':checked').length;
-        $('#count-checked-checkboxes, #count-checked-checkboxes2, #count-checked-checkboxes3').text('Name of Section ' + countCheckedCheckboxes);
+        $(this).siblings('.panel-heading').find('.count-checked-checkboxes').text('Name of Section ' + countCheckedCheckboxes);
+        // $('#count-checked-checkboxes, #count-checked-checkboxes2, #count-checked-checkboxes3').text('Name of Section ' + countCheckedCheckboxes);
     });
-
-    $('#numOfQuestions, #numOfQuestions2, #numOfQuestions3').append( "/" + e.length);
-
 });
